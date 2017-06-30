@@ -1,6 +1,6 @@
 from scrapy import Spider
 from scrapy.selector import Selector
-from tutorial.spiders import NewsItem
+from tutorial.items import NewsItem
 
 class NewsSpider(Spider):
       name = "ifeng"
@@ -12,11 +12,11 @@ class NewsSpider(Spider):
       def parse(self,response):
           topNews = Selector(response).xpath('//ul[@class="FNewMTopLis"]/li')
           for news in topNews:
-             # print("--- %s" %news) 
              item = NewsItem()
-             title = news.xpath("a/text()").extract()[0]
-             url = news.xpath("a/@href").extract()[0]
-             #item['title'] = title
-             #item['url'] = url
-             print("title %s href %s" %(title,url))
-             #print("title %s" %news.xpath("a/text()")) 
+             if news.xpath('a'):
+                 title = news.xpath("a/text()").extract()[0].strip()
+                 url = news.xpath("a/@href").extract()[0].strip()
+                 item['title'] = title
+                 item['url'] = url
+                 print("title %s href %s" %(title,url))
+
