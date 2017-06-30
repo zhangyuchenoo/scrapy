@@ -19,4 +19,5 @@ class NewsSpider(Spider):
                  item['title'] = title
                  item['url'] = url
                  print("title %s href %s" %(title,url))
+                 yield  item
 
