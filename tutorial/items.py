@@ -13,6 +13,16 @@ class TutorialItem(scrapy.Item):
     # name = scrapy.Field()
     pass
 
+
 class NewsItem(scrapy.Item):
-     title = scrapy.Field()
-     url = scrapy.Field()
+    title = scrapy.Field()
+    url = scrapy.Field()
+
+
+class MovieItem(scrapy.Item):
+    name = scrapy.Field()
+    link = scrapy.Field()
+    director = scrapy.Field()
+    score = scrapy.Field()
+    describ = scrapy.Field()
+    action_time = scrapy.Field()
